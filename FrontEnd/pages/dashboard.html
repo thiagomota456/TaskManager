@@ -5,31 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="../assets/styles.css">
+    <link rel="stylesheet" href="../assets/dashboard.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="../js/dashboard.js" defer></script>
 </head>
-<body>
+<body class="dashboard-page">
     <header>
         <h1>Dashboard</h1>
         <button id="settingsButton" onclick="window.location.href='settings.html'">⚙️ Configurações</button>
     </header>
 
-    <main>
-        <section id="tasks">
-            <div class="task-column">
-                <h2>Tarefas Não Iniciadas</h2>
-                <button id="createTaskButton">+ Criar Tarefa</button>
-                <div id="notStartedTasks" class="task-list"></div>
-            </div>
-            <div class="task-column">
-                <h2>Tarefas Sendo Feitas</h2>
-                <div id="inProgressTasks" class="task-list"></div>
-            </div>
-            <div class="task-column">
-                <h2>Tarefas Finalizadas</h2>
-                <div id="completedTasks" class="task-list"></div>
-            </div>
-        </section>
+    <main id="categoriesContainer">
+        <!-- As categorias e tarefas serão carregadas dinamicamente via API -->
     </main>
 </body>
 </html>

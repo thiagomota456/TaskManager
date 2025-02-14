@@ -1,9 +1,6 @@
 $(document).ready(function () {
-
-    // === LOGIN ===
     $("#loginForm").submit(function (event) {
         event.preventDefault();
-
         let username = $("#username").val();
         let password = $("#password").val();
 
@@ -13,10 +10,8 @@ $(document).ready(function () {
             contentType: "application/json",
             data: JSON.stringify({ username, password }),
             success: function (response) {
-                console.log(response);
                 localStorage.setItem("token", response.token);
-                alert("Login realizado com sucesso!");
-                window.location.href = "dashboard.html";  // Redireciona para uma página protegida
+                window.location.href = "dashboard.html";
             },
             error: function () {
                 $("#loginError").text("Credenciais inválidas.");
@@ -24,10 +19,8 @@ $(document).ready(function () {
         });
     });
 
-    // === REGISTRO ===
     $("#registerForm").submit(function (event) {
         event.preventDefault();
-
         let newUsername = $("#newUsername").val();
         let newPassword = $("#newPassword").val();
 
@@ -36,11 +29,8 @@ $(document).ready(function () {
             type: "POST",
             contentType: "application/json",
             data: JSON.stringify({ username: newUsername, password: newPassword }),
-            success: function (response) {
-                $("#registerSuccess").text("Usuário criado com sucesso! Redirecionando...");
-                setTimeout(() => {
-                    window.location.href = "index.html";
-                }, 2000);
+            success: function () {
+                window.location.href = "index.html";
             },
             error: function (xhr) {
                 let errorMessage = JSON.parse(xhr.responseText).error || "Erro ao cadastrar.";
@@ -48,5 +38,4 @@ $(document).ready(function () {
             }
         });
     });
-
 });

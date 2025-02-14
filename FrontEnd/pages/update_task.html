@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualizar Tarefa</title>
+    <link rel="stylesheet" href="../assets/styles.css">
+    <link rel="stylesheet" href="../assets/update_task.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="../js/update_task.js" defer></script>
+</head>
+<body class="update-task-page">
+    <div class="update-task-container">
+        <h2>Editar Tarefa</h2>
+        <form id="updateTaskForm">
+            <input type="hidden" id="taskIdInput">
+            <label for="title">Título</label>
+            <input type="text" id="title" required>
+
+            <label for="description">Descrição</label>
+            <textarea id="description" required></textarea>
+
+            <label for="category">Categoria</label>
+            <select id="category"></select>
+
+            <label for="status">Status</label>
+            <select id="status">
+                <option value="true">Concluída</option>
+                <option value="false">Pendente</option>
+            </select>
+
+            <div class="buttons">
+                <button type="submit" class="save-btn">Salvar Alterações</button>
+                <button type="button" class="cancel-btn" onclick="cancelUpdate()">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
