@@ -1,0 +1,11 @@
+{
+    "headers": {
+      "/assets/*.css": {
+        "Content-Type": "text/css"
+      },
+      "/assets/*.js": {
+        "Content-Type": "application/javascript"
+      }
+    }
+  }
+  
