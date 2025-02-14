@@ -2,8 +2,8 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
-# Copia apenas os arquivos necessários
-COPY BackEnd/ToDoListAPI ./
+# Copia tudo da API para dentro do container
+COPY . ./
 RUN dotnet restore
 
 # Compila o projeto em modo Release
