@@ -1,11 +1,14 @@
+import { apiBase } from "../js/main.js";
+
 $(document).ready(function () {
+    
     $("#loginForm").submit(function (event) {
         event.preventDefault();
         let username = $("#username").val();
         let password = $("#password").val();
 
         $.ajax({
-            url: "https://localhost:7116/api/authorization/login",
+            url: `${apiBase}/authorization/login`,
             type: "POST",
             contentType: "application/json",
             data: JSON.stringify({ username, password }),
@@ -25,7 +28,7 @@ $(document).ready(function () {
         let newPassword = $("#newPassword").val();
 
         $.ajax({
-            url: "https://localhost:7116/api/user/Create",
+            url: `${apiBase}/user/Create`,
             type: "POST",
             contentType: "application/json",
             data: JSON.stringify({ username: newUsername, password: newPassword }),

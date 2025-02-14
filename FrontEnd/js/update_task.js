@@ -1,14 +1,8 @@
-
-const apiBase = "https://localhost:7116/api";
-const token = localStorage.getItem("token");
+import { apiBase, token, validLogin } from "../js/main.js";
 
 $(document).ready(function () {
 
-    if (!token) {
-        alert("Usuário não autenticado!");
-        window.location.href = "index.html";
-        return;
-    }
+    validLogin();
 
     console.log()
     // Obtém o ID da tarefa da URL
@@ -47,7 +41,12 @@ $(document).ready(function () {
     });
 
     loadTaskData(taskId);
+
 });
+
+export function cancelUpdate() {
+    window.location.href = "dashboard.html";
+}
 
 function loadTaskData(taskId) {
     $.ajax({
@@ -78,6 +77,3 @@ function loadCategories(selectedCategoryId) {
     });
 }
 
-function cancelUpdate() {
-    window.location.href = "dashboard.html";
-}

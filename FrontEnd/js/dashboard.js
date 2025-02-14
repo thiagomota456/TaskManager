@@ -1,14 +1,8 @@
-
-const apiBase = "https://localhost:7116/api";
-const token = localStorage.getItem("token");
+import { apiBase, token, validLogin } from "../js/main.js";
 
 $(document).ready(function () {
 
-    if (!token) {
-        alert("Usuário não autenticado!");
-        window.location.href = "index.html";
-        return;
-    }
+    validLogin();
 
     $("#logoutButton").click(function () {
         $.ajax({
@@ -28,8 +22,13 @@ $(document).ready(function () {
     });
 
     loadCategoriesAndTasks();
+
+    
 });
 
+window.redirectToCreateTask = function(categoryId) {
+    window.location.href = `create_task.html?categoryId=${categoryId}`;
+};
 
 function loadCategoriesAndTasks() {
     $.ajax({
@@ -59,6 +58,8 @@ function loadCategoriesAndTasks() {
             alert("Erro ao carregar as categorias.");
         }
     });
+
+    
 }
 
 function loadCategoryWithTasks(categoryId) {
@@ -95,11 +96,9 @@ function loadCategoryWithTasks(categoryId) {
     });
 }
 
-function redirectToCreateTask(categoryId) {
-    window.location.href = `create_task.html?categoryId=${categoryId}`;
-}
 
-function deleteTask(id) {
+
+export function deleteTask(id) {
     $.ajax({
         url: `${apiBase}/Task/Delete/${id}`,
         type: "POST",
@@ -111,7 +110,7 @@ function deleteTask(id) {
     });
 }
 
-function updateTask(id) {
+export function updateTask(id) {
     console.log(id);
     window.location.href = `update_task.html?id=${id}`;
 }

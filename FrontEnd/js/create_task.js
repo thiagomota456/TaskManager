@@ -1,12 +1,8 @@
-$(document).ready(function () {
-    const apiBase = "https://localhost:7116/api";
-    const token = localStorage.getItem("token");
+import { apiBase, token, validLogin } from "../js/main.js";
 
-    if (!token) {
-        alert("Usuário não autenticado!");
-        window.location.href = "index.html";
-        return;
-    }
+$(document).ready(function () {
+
+    validLogin();
 
     // Obtém o ID da categoria da URL
     const urlParams = new URLSearchParams(window.location.search);
@@ -48,6 +44,6 @@ $(document).ready(function () {
 
 });
 
-function cancelCreate() {
+export function cancelCreate() {
     window.location.href = "dashboard.html";
 }
