@@ -22,49 +22,65 @@ function loadCategoriesAndTasks() {
         success: function (categories) {
             $("#categoriesContainer").empty();
             categories.forEach(category => {
+                if (!category.id || !category.name) return; // Verifica se a categoria possui ID e nome válidos
+
+                // Cria o elemento da categoria
                 const categoryElement = $(`
                     <div class="category">
                         <h2 class="category-title">${category.name}</h2>
-                        <div class="task-list" id="tasks-${category.name}"></div>
+                        <button class="create-task-btn" onclick="redirectToCreateTask(${category.id})">+ Criar Tarefa</button>
+                        <div class="task-list" id="tasks-${category.id}"></div>
                     </div>
                 `);
                 $("#categoriesContainer").append(categoryElement);
-                console.log(category.name);
-                loadTasks(category.name);
+
+                // Carrega as tarefas da categoria utilizando o novo endpoint
+                loadCategoryWithTasks(category.id);
             });
+        },
+        error: function () {
+            alert("Erro ao carregar as categorias.");
         }
     });
 }
 
-function loadTasks(categoryName) {
+function loadCategoryWithTasks(categoryId) {
     $.ajax({
-        url: `${apiBase}/Task/GetAll`,
+        url: `${apiBase}/category/GetById/${categoryId}/true`,
         type: "GET",
         headers: { Authorization: `Bearer ${token}` },
-        success: function (tasks) {
-            console.log("Tasks Pegas:" + tasks);
-            const categoryTasks = tasks.filter(task => task.categoryName === categoryName);
-            console.log("Tasks Filtradas:" + categoryTasks);
-            categoryTasks.forEach(task => {
-                const taskElement = $(`
-                    <div class="task-card">
-                        <h3>${task.title}</h3>
-                        <p>${task.description}</p>
-                        <span class="status ${task.isCompleted ? 'completed' : 'pending'}">
-                            ${task.isCompleted ? 'isCompleted' : 'isPending'}
-                        </span>
-                        <div class="buttons">
-                            <button onclick=deleteTask('${task.id}')>Delete</button>
-                            <button onclick=updateTask('${task.id}')>Update</button>
+        success: function (category) {
+            if (category.tasks && category.tasks.length > 0) {
+                const taskListElement = $(`#tasks-${category.id}`);
+                taskListElement.empty(); // Limpa as tarefas existentes
+
+                category.tasks.forEach(task => {
+                    const taskElement = $(`
+                        <div class="task-card">
+                            <h3>${task.title}</h3>
+                            <p>${task.description}</p>
+                            <span class="status ${task.isCompleted ? 'completed' : 'pending'}">
+                                ${task.isCompleted ? 'Concluída' : 'Pendente'}
+                            </span>
+                            <div class="buttons">
+                                <button onclick="deleteTask(${task.id})">Excluir</button>
+                                <button onclick="updateTask(${task.id})">Editar</button>
+                            </div>
                         </div>
-                    </div>
-                `);
-                $(`#tasks-${categoryName}`).append(taskElement);
-            });
+                    `);
+                    taskListElement.append(taskElement);
+                });
+            }
+        },
+        error: function () {
+            alert(`Erro ao carregar as tarefas da categoria ID ${categoryId}.`);
         }
     });
 }
 
+function redirectToCreateTask(categoryId) {
+    window.location.href = `create_task.html?categoryId=${categoryId}`;
+}
 
 function deleteTask(id) {
     $.ajax({

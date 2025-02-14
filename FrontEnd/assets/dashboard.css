@@ -1,9 +1,9 @@
-/* ========== ESTILOS EXCLUSIVOS DO DASHBOARD ========== */
+/* ========== ESTILOS MELHORADOS PARA O DASHBOARD ========== */
 .dashboard-page {
-    background-color: #1e1e1e;
+    background: linear-gradient(135deg, #222, #444);
     color: white;
     padding: 20px;
-    overflow: scroll;
+    overflow-y: auto;
 }
 
 header {
@@ -14,98 +14,145 @@ header {
     align-items: center;
 }
 
-main{
-    align-items: normal;
-}
 #categoriesContainer {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
     margin-top: 20px;
 }
 
+/* ====== Melhorando as Categorias ====== */
 .category {
-    background: #fff;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    color: black;
+    background: #2c2c2c;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    color: white;
 }
 
 .category-title {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: bold;
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 5px;
 }
 
+/* ====== Melhorando os Cards das Tarefas ====== */
 .task-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 15px;
     justify-content: center;
 }
 
 .task-card {
-    background: white;
-    border: 2px solid black;
-    padding: 10px;
-    width: 250px;
-    border-radius: 5px;
+    background: #333;
+    border: 2px solid #667eea;
+    padding: 15px;
+    width: 280px;
+    border-radius: 8px;
     text-align: center;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 2px 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+}
+
+.task-card:hover {
+    transform: scale(1.03);
 }
 
 .task-card h3 {
     font-weight: bold;
-    font-size: 16px;
+    font-size: 18px;
+    color: #fff;
 }
 
 .task-card p {
     font-size: 14px;
+    color: #ccc;
     margin: 5px 0;
 }
 
+/* ====== Status da Tarefa ====== */
 .task-card .status {
     font-weight: bold;
+    display: block;
+    margin-top: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 100px;
+    margin: 10px auto;
+    text-align: center;
 }
 
 .status.completed {
-    color: green;
+    background: #28a745;
+    color: white;
 }
 
 .status.pending {
-    color: red;
+    background: #dc3545;
+    color: white;
 }
 
+/* ====== Botões das Tarefas ====== */
 .task-card .buttons {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     margin-top: 10px;
 }
 
 .task-card button {
-    border: 2px solid blue;
-    background: white;
-    color: blue;
-    padding: 5px;
+    background: transparent;
+    border: 2px solid #667eea;
+    color: #667eea;
+    padding: 6px 10px;
     cursor: pointer;
     border-radius: 5px;
     font-size: 14px;
+    transition: 0.3s;
 }
 
 .task-card button:hover {
-    background: blue;
+    background: #667eea;
     color: white;
 }
 
+/* ====== Botão "See All" ====== */
 .see-all {
-    background: blue;
+    background: #667eea;
     color: white;
     border: none;
-    padding: 8px;
-    width: 100px;
-    margin-top: 10px;
+    padding: 10px;
+    width: 120px;
+    margin-top: 15px;
     cursor: pointer;
     border-radius: 5px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.see-all:hover {
+    background: #5a67d8;
+}
+
+/* ====== Botão Criar Tarefa ====== */
+.create-task-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.create-task-btn:hover {
+    background-color: #218838;
 }

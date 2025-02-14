@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Nova Tarefa</title>
+    <link rel="stylesheet" href="../assets/styles.css">
+    <link rel="stylesheet" href="../assets/create_task.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="../js/create_task.js" defer></script>
+</head>
+<body class="create-task-page">
+    <div class="create-task-container">
+        <h2>Criar Nova Tarefa</h2>
+        <form id="createTaskForm">
+            <input type="hidden" id="categoryId">
+            
+            <label for="title">Título</label>
+            <input type="text" id="title" required>
+
+            <label for="description">Descrição</label>
+            <textarea id="description" required></textarea>
+
+            <label for="status">Status</label>
+            <select id="status">
+                <option value="false">Pendente</option>
+                <option value="true">Concluída</option>
+            </select>
+
+            <div class="buttons">
+                <button type="submit" class="save-btn">Criar Tarefa</button>
+                <button type="button" class="cancel-btn" onclick="cancelCreate()">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

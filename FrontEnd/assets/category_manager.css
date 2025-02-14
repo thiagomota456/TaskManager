@@ -1,0 +1,117 @@
+/* ========== ESTILOS PARA A PÁGINA DE CATEGORIAS ========== */
+.category-page {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.category-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    color: black;
+}
+
+.category-container h2 {
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+/* Formulário de Criação */
+#createCategoryForm {
+    margin-bottom: 20px;
+}
+
+#createCategoryForm input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#createCategoryForm button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#createCategoryForm button:hover {
+    background-color: #218838;
+}
+
+/* Lista de Categorias */
+#categoryList {
+    margin-top: 10px;
+}
+
+.category-item {
+    background: #2c2c2c;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.category-item span {
+    font-weight: bold;
+}
+
+.category-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.category-buttons button {
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-button {
+    background-color: #ffc107;
+    color: black;
+}
+
+.edit-button:hover {
+    background-color: #e0a800;
+}
+
+.delete-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+/* Botão Voltar */
+.back-button {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.back-button:hover {
+    background-color: #5a6268;
+}
