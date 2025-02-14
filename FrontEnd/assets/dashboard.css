@@ -121,24 +121,6 @@ header {
     color: white;
 }
 
-/* ====== Botão "See All" ====== */
-.see-all {
-    background: #667eea;
-    color: white;
-    border: none;
-    padding: 10px;
-    width: 120px;
-    margin-top: 15px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 14px;
-    transition: 0.3s;
-}
-
-.see-all:hover {
-    background: #5a67d8;
-}
-
 /* ====== Botão Criar Tarefa ====== */
 .create-task-btn {
     background-color: #28a745;
@@ -155,4 +137,8 @@ header {
 
 .create-task-btn:hover {
     background-color: #218838;
+}
+
+.header-buttons{
+    margin: 5px;
 }

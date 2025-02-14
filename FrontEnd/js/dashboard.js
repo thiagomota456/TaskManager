@@ -10,6 +10,23 @@ $(document).ready(function () {
         return;
     }
 
+    $("#logoutButton").click(function () {
+        $.ajax({
+            url: `${apiBase}/authorization/logout`,
+            type: "GET",
+            headers: { Authorization: `Bearer ${token}` },
+            success: function () {
+                alert("Logout realizado com sucesso!");
+                localStorage.removeItem("token");
+                sessionStorage.clear();
+                window.location.href = "index.html";
+            },
+            error: function () {
+                alert("Erro ao fazer logout.");
+            }
+        });
+    });
+
     loadCategoriesAndTasks();
 });
 
